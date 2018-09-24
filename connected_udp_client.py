@@ -3,7 +3,7 @@ from __future__ import print_function
 from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor
 
-class EchoClientDatagramProtocol(DatagramProtocol):
+class ConnectedClientDatagramProtocol(DatagramProtocol):
 
     def startProtocol(self):
         self.transport.connect('127.0.0.1', 8000)
@@ -42,7 +42,7 @@ class EchoClientDatagramProtocol(DatagramProtocol):
             self.sendDatagram(datagram)
         
 def main():
-    protocol = EchoClientDatagramProtocol()
+    protocol = ConnectedClientDatagramProtocol()
     t = reactor.listenUDP(0, protocol)
     reactor.run()
     

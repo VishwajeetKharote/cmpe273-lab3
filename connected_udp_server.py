@@ -1,7 +1,7 @@
 from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor
 
-class EchoUDP(DatagramProtocol):
+class ConnectedUDP(DatagramProtocol):
     def datagramReceived(self, datagram, address):
         if(datagram == "n" or datagram == "N"):
             print("Datagram received from the client: '%s'"%datagram)
@@ -19,7 +19,7 @@ class EchoUDP(DatagramProtocol):
        
         
 def main():
-    reactor.listenUDP(8000, EchoUDP())
+    reactor.listenUDP(8000, ConnectedUDP())
     reactor.run()
 
 if __name__ == '__main__':
